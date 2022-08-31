@@ -15,8 +15,8 @@ public class Jogo {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  private Time time1;
-  private Time time2;
+  private String time1;
+  private String time2;
   private Integer golsTime1;
   private Integer golsTime2;
   private Integer publicoPagante;
