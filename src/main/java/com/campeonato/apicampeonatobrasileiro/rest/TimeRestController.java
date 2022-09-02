@@ -28,4 +28,9 @@ public class TimeRestController {
       return ResponseEntity.ok().body(timeServico.listarTimes());
     }
 
+    public ResponseEntity<Void> cadastrarTime(Time time){
+        timeServico.cadastrarTime(time);
+      return ResponseEntity.ok().build();
+    }
+
 }
