@@ -3,6 +3,7 @@ package com.campeonato.apicampeonatobrasileiro.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -14,6 +15,8 @@ public class Jogo {
   private Integer golsTime1;
   private Integer golsTime2;
   private Integer publicoPagante;
+  private LocalDateTime data;
+  private Integer rodada;
 
   @ManyToOne
   @JoinColumn(name="time1")
