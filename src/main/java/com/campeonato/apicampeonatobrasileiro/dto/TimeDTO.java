@@ -1,5 +1,7 @@
 package com.campeonato.apicampeonatobrasileiro.dto;
 
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
 
 @Data
