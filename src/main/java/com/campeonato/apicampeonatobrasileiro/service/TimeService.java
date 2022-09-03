@@ -18,6 +18,7 @@ public class TimeService {
     public TimeDTO cadastrarTime(TimeDTO time) throws Exception {
         Time entity = toEntity(time);
         if(time.getId() == null){
+           Integer newId = Math.toIntExact(repository.count()+1);
            entity =  repository.save(entity);
            return toDto(entity);
         }else {
@@ -27,6 +28,7 @@ public class TimeService {
 
     private Time toEntity(TimeDTO time) {
         Time entity = new Time();
+        entity.setId(time.getId());
         entity.setEstadio(time.getEstadio());
         entity.setSigla(time.getSigla());
         entity.setUf(time.getUf());
@@ -35,6 +37,7 @@ public class TimeService {
     }
     private TimeDTO toDto(Time entity) {
         TimeDTO dto = new TimeDTO();
+        dto.setId(entity.getId());
         dto.setEstadio(entity.getEstadio());
         dto.setSigla(entity.getSigla());
         dto.setUf(entity.getUf());

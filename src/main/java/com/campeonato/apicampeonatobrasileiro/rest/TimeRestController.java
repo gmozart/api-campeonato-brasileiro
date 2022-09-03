@@ -24,7 +24,7 @@ public class TimeRestController {
     }
 
     @ApiOperation(value = "Obtém uma lista de Times")
-    @GetMapping(value = "{}")
+    @GetMapping(value = "{/}")
     public ResponseEntity<List <TimeDTO>>  getTimes(){
       return ResponseEntity.ok().body(timeServico.listarTimes());
     }
