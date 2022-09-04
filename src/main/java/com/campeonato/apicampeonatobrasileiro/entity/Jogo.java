@@ -17,6 +17,7 @@ public class Jogo {
   private Integer publicoPagante;
   private LocalDateTime data;
   private Integer rodada;
+  private Boolean encerrado;
 
   @ManyToOne
   @JoinColumn(name="time1")
@@ -25,7 +26,6 @@ public class Jogo {
   @ManyToOne
   @JoinColumn(name="time2")
   private Time time2;
-
 
 
 
