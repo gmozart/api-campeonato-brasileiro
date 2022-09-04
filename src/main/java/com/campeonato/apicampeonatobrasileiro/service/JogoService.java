@@ -20,7 +20,7 @@ public class JogoService {
     private JogoRepository jogoRepository;
 
     @Autowired
-    TimeRepository timeRepository;
+    TimeService timeServico;
 
     /**
      * @param primeiraRodada Data da primeira Rodada
@@ -28,7 +28,7 @@ public class JogoService {
      */
 
     public void gerarJogos(LocalDateTime primeiraRodada, List<LocalDate> datasInvalidas){
-        final List<Time> times = timeRepository.findAll();
+        final List<Time> times = timeServico.findAll();
         List<Time> all1 = new ArrayList<>();
         List<Time> all2 = new ArrayList<>();
         all1.addAll(times);
