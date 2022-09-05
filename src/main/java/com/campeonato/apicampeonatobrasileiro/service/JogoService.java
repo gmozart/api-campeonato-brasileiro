@@ -94,4 +94,7 @@ public class JogoService {
 
     }
 
+    public List<Jogo> obterJogos() {
+     return jogoRepository.findAll();
+    }
 }
