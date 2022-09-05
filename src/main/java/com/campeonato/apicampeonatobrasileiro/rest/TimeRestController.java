@@ -18,13 +18,13 @@ public class TimeRestController {
     private TimeService timeServico;
 
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<TimeDTO> getTime(@PathVariable Integer id){
       return ResponseEntity.ok().body(timeServico.obterTime(id));
     }
 
 
-    @GetMapping(value = "{ }")
+    @GetMapping
     public ResponseEntity<List <TimeDTO>>  getTimes(){
       return ResponseEntity.ok().body(timeServico.listarTimes());
     }
