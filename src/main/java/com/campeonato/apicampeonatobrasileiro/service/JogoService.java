@@ -8,10 +8,12 @@ import com.campeonato.apicampeonatobrasileiro.repository.TimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -95,7 +97,7 @@ public class JogoService {
 
     }
 
-    private JogoDTO entitutoDTO(Jogo entity){
+    private JogoDTO toDto(Jogo entity){
         JogoDTO dto = new JogoDTO();
         dto.setId(entity.getId());
         dto.setData(entity.getData());
@@ -109,7 +111,9 @@ public class JogoService {
         return dto;
     }
 
-    public List<Jogo> obterJogos() {
-     return jogoRepository.findAll();
+    public List<JogoDTO> listarJogos() {
+
+        return jogoRepository.findAll().stream().map(entity -> toDto(entity)).collect(Collectors.toList());
     }
+    
 }
