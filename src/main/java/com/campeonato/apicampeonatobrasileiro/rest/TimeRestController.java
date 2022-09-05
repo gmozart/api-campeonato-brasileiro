@@ -19,12 +19,14 @@ public class TimeRestController {
 
 
     @GetMapping(value = "/{id}")
+    @ApiOperation(value = "Retorno dos times por Id")
     public ResponseEntity<TimeDTO> getTime(@PathVariable Integer id){
       return ResponseEntity.ok().body(timeServico.obterTime(id));
     }
 
 
     @GetMapping
+    @ApiOperation(value = "Retorno dos times")
     public ResponseEntity<List <TimeDTO>>  getTimes(){
       return ResponseEntity.ok().body(timeServico.listarTimes());
     }

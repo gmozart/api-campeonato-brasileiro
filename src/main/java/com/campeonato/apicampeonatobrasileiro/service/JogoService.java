@@ -1,5 +1,6 @@
 package com.campeonato.apicampeonatobrasileiro.service;
 
+import com.campeonato.apicampeonatobrasileiro.dto.JogoDTO;
 import com.campeonato.apicampeonatobrasileiro.entity.Jogo;
 import com.campeonato.apicampeonatobrasileiro.entity.Time;
 import com.campeonato.apicampeonatobrasileiro.repository.JogoRepository;
@@ -92,6 +93,20 @@ public class JogoService {
         jogo.setPublicoPagante(0);
         return jogo;
 
+    }
+
+    private JogoDTO entitutoDTO(Jogo entity){
+        JogoDTO dto = new JogoDTO();
+        dto.setId(entity.getId());
+        dto.setData(entity.getData());
+        dto.setRodada(entity.getRodada());
+        dto.setEncerrado(entity.getEncerrado());
+        dto.setGolsTime1(entity.getGolsTime1());
+        dto.setGolsTime2(entity.getGolsTime2());
+        dto.setPublicoPagante(entity.getPublicoPagante());
+        dto.setTime1(timeServico.toDto(entity.getTime1()));
+        dto.setTime2(timeServico.toDto(entity.getTime2()));
+        return dto;
     }
 
     public List<Jogo> obterJogos() {
