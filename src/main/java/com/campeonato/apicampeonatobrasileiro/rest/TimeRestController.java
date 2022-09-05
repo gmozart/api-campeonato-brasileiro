@@ -17,21 +17,20 @@ public class TimeRestController {
     @Autowired
     private TimeService timeServico;
 
-    @ApiOperation(value = "Obtém os dados de um time")
+
     @GetMapping(value = "{id}")
     public ResponseEntity<TimeDTO> getTime(@PathVariable Integer id){
       return ResponseEntity.ok().body(timeServico.obterTime(id));
     }
 
-    @ApiOperation(value = "Obtém uma lista de Times")
-    @GetMapping(value = "{/}")
+
+    @GetMapping(value = "{ }")
     public ResponseEntity<List <TimeDTO>>  getTimes(){
       return ResponseEntity.ok().body(timeServico.listarTimes());
     }
 
     @PostMapping
     public ResponseEntity<TimeDTO> cadastrarTime(@Valid @RequestBody TimeDTO time) throws Exception {
-        timeServico.cadastrarTime(time);
       return ResponseEntity.ok().body(timeServico.cadastrarTime(time));
     }
 
