@@ -24,10 +24,10 @@ public class JogoService {
 
     /**
      * @param primeiraRodada Data da primeira Rodada
-     * @param datasInvalidas Datas que não podem ter jogos (ex: Datas fifa)
+     *
      */
 
-    public void gerarJogos(LocalDateTime primeiraRodada, List<LocalDate> datasInvalidas){
+    public void gerarJogos(LocalDateTime primeiraRodada){
         final List<Time> times = timeServico.findAll();
         List<Time> all1 = new ArrayList<>();
         List<Time> all2 = new ArrayList<>();
