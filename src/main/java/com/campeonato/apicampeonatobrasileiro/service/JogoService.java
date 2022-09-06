@@ -137,7 +137,17 @@ public class JogoService {
     }
 
     public ClassificacaoDTO obterClassificacao() {
-
+        ClassificacaoDTO classificacaoDTO = new ClassificacaoDTO();
+        final List<Time> times = timeServico.findAll();
+        times.forEach(time -> {
+            final List<Jogo> jogosMandante = jogoRepository.findByTime1AndEncerrado(time,true);
+            final List<Jogo> jogosVisitante = jogoRepository.findByTime2AndEncerrado(time,true);
+            jogosMandante.forEach(jogo -> {
+            });
+            jogosVisitante.forEach(jogo -> {
+            });
+        });
+        return  classificacaoDTO;
     }
 
     public Object obterJogos(Integer id) {
