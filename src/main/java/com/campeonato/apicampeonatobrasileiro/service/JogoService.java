@@ -1,15 +1,14 @@
 package com.campeonato.apicampeonatobrasileiro.service;
 
+import com.campeonato.apicampeonatobrasileiro.dto.ClassificacaoDTO;
 import com.campeonato.apicampeonatobrasileiro.dto.JogoDTO;
+import com.campeonato.apicampeonatobrasileiro.dto.JogoFinalizadoDTO;
 import com.campeonato.apicampeonatobrasileiro.entity.Jogo;
 import com.campeonato.apicampeonatobrasileiro.entity.Time;
 import com.campeonato.apicampeonatobrasileiro.repository.JogoRepository;
-import com.campeonato.apicampeonatobrasileiro.repository.TimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -123,21 +122,22 @@ public class JogoService {
     }
 
 
-    public JogoDTO  finalizar(Integer id, JogoDTO jogoDto) throws Exception {
+    public JogoDTO  finalizar(Integer id, JogoFinalizadoDTO jogoDTO) throws Exception {
       Optional<Jogo> optionalJogo = jogoRepository.findById(id);
       if (optionalJogo.isPresent()){
           final Jogo jogo = optionalJogo.get();
-          jogo.setGolsTime1(jogoDto.getGolsTime1());
-          jogo.setGolsTime2(jogoDto.getGolsTime2());
+          jogo.setGolsTime1(jogoDTO.getGolsTime1());
+          jogo.setGolsTime2(jogoDTO.getGolsTime2());
           jogo.setEncerrado(true);
-          jogo.setPublicoPagante(jogoDto.getPublicoPagante());
+          jogo.setPublicoPagante(jogoDTO.getPublicoPagante());
          return  toDto(jogoRepository.save(jogo));
       } else {
           throw new Exception("Jogo não existe");
       }
     }
 
-    public Object obterClassificacao() {
+    public ClassificacaoDTO obterClassificacao() {
+
     }
 
     public Object obterJogos(Integer id) {

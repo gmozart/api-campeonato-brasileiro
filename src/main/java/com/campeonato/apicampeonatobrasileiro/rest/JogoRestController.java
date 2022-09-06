@@ -1,6 +1,7 @@
 package com.campeonato.apicampeonatobrasileiro.rest;
 
 import com.campeonato.apicampeonatobrasileiro.dto.JogoDTO;
+import com.campeonato.apicampeonatobrasileiro.dto.JogoFinalizadoDTO;
 import com.campeonato.apicampeonatobrasileiro.entity.Jogo;
 import com.campeonato.apicampeonatobrasileiro.service.JogoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class JogoRestController {
     }
 
     @PostMapping(value = "/finalizar/{id}")
-    public ResponseEntity<JogoDTO> finalizarJogo(@PathVariable Integer id, @RequestBody JogoDTO jogoDto) throws Exception {
+    public ResponseEntity<JogoDTO> finalizarJogo(@PathVariable Integer id, @RequestBody JogoFinalizadoDTO jogoDto) throws Exception {
 
         return ResponseEntity.ok().body(jogoService.finalizar(id, jogoDto));
     }
