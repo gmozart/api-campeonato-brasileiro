@@ -26,13 +26,13 @@ public class JogoRestController {
     @GetMapping
     public ResponseEntity<List<JogoDTO>> obterJogos(){
 
-        return ResponseEntity.ok().body(jogoService.obterJogos());
+        return ResponseEntity.ok().body(jogoService.listarJogos());
     }
 
     @PostMapping(value = "/finalizar/{id}")
-    public ResponseEntity<JogoDTO> finalizarJogo(@RequestBody JogoDTO jogoDto){
+    public ResponseEntity<JogoDTO> finalizarJogo(@PathVariable Integer id, @RequestBody JogoDTO jogoDto) throws Exception {
 
-        return ResponseEntity.ok().body(jogoService.finalizar(jogoDto));
+        return ResponseEntity.ok().body(jogoService.finalizar(id, jogoDto));
     }
     @GetMapping(value="/classificacao")
     public ResponseEntity<JogoDTO> classificacao(){
@@ -44,5 +44,6 @@ public class JogoRestController {
     public ResponseEntity<JogoDTO> obterJogo(@PathVariable Integer id){
 
         return ResponseEntity.ok().body(jogoService.obterJogos(id));
+        
     }
 }

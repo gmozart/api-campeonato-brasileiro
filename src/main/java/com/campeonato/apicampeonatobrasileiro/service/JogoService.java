@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -115,5 +116,30 @@ public class JogoService {
 
         return jogoRepository.findAll().stream().map(entity -> toDto(entity)).collect(Collectors.toList());
     }
-    
+
+    public JogoDTO jogoId(Integer id) {
+
+        return toDto(jogoRepository.findById(id).get());
+    }
+
+
+    public JogoDTO  finalizar(Integer id, JogoDTO jogoDto) throws Exception {
+      Optional<Jogo> optionalJogo = jogoRepository.findById(id);
+      if (optionalJogo.isPresent()){
+          final Jogo jogo = optionalJogo.get();
+          jogo.setGolsTime1(jogoDto.getGolsTime1());
+          jogo.setGolsTime2(jogoDto.getGolsTime2());
+          jogo.setEncerrado(true);
+          jogo.setPublicoPagante(jogoDto.getPublicoPagante());
+         return  toDto(jogoRepository.save(jogo));
+      } else {
+          throw new Exception("Jogo não existe");
+      }
+    }
+
+    public Object obterClassificacao() {
+    }
+
+    public Object obterJogos(Integer id) {
+    }
 }
