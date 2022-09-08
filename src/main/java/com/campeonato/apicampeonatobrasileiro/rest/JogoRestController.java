@@ -1,5 +1,6 @@
 package com.campeonato.apicampeonatobrasileiro.rest;
 
+import com.campeonato.apicampeonatobrasileiro.dto.ClassificacaoDTO;
 import com.campeonato.apicampeonatobrasileiro.dto.JogoDTO;
 import com.campeonato.apicampeonatobrasileiro.dto.JogoFinalizadoDTO;
 import com.campeonato.apicampeonatobrasileiro.entity.Jogo;
@@ -36,7 +37,7 @@ public class JogoRestController {
         return ResponseEntity.ok().body(jogoService.finalizar(id, jogoDto));
     }
     @GetMapping(value="/classificacao")
-    public ResponseEntity<JogoDTO> classificacao(){
+    public ResponseEntity<ClassificacaoDTO> classificacao(){
 
         return ResponseEntity.ok().body(jogoService.obterClassificacao());
     }

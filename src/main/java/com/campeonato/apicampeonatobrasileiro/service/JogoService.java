@@ -1,6 +1,7 @@
 package com.campeonato.apicampeonatobrasileiro.service;
 
 import com.campeonato.apicampeonatobrasileiro.dto.ClassificacaoDTO;
+import com.campeonato.apicampeonatobrasileiro.dto.ClassificacaoTimeDTO;
 import com.campeonato.apicampeonatobrasileiro.dto.JogoDTO;
 import com.campeonato.apicampeonatobrasileiro.dto.JogoFinalizadoDTO;
 import com.campeonato.apicampeonatobrasileiro.entity.Jogo;
@@ -172,6 +173,20 @@ public class JogoService {
                 golsMarcardos.set(golsMarcardos.get() + jogo.getGolsTime2());
                 golsSofridos.set(golsMarcardos.get() + jogo.getGolsTime1());
             });
+
+            ClassificacaoTimeDTO classificacaoTimeDTO = new ClassificacaoTimeDTO();
+
+            classificacaoTimeDTO.setIdTime(time.getId());
+            classificacaoTimeDTO.setTime(time.getNome());
+            classificacaoTimeDTO.setDerrotas(derrotas.get());
+            classificacaoTimeDTO.setVitorias(vitorias.get());
+            classificacaoTimeDTO.setEmpates(empates.get());
+            classificacaoTimeDTO.setPontos((vitorias.get() * 3) + empates.get());
+            classificacaoTimeDTO.setGolsMarcados(golsMarcardos.get());
+            classificacaoTimeDTO.setGolsSofridos(golsSofridos.get());
+            classificacaoTimeDTO.setJogos(derrotas.get() + empates.get() + vitorias.get());
+            classificacaoDTO.getTimes().add(classificacaoTimeDTO);
+
         });
         return  classificacaoDTO;
     }
