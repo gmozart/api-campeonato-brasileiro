@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -188,9 +189,17 @@ public class JogoService {
             classificacaoDTO.getTimes().add(classificacaoTimeDTO);
 
         });
+
+        Collections.sort(classificacaoDTO.getTimes(), Collections.reverseOrder());
+        int posicao = 0;
+        for(ClassificacaoTimeDTO time : classificacaoDTO.getTimes()) {
+            time.setPosicao(posicao++);
+        }
+
         return  classificacaoDTO;
     }
 
     public Object obterJogos(Integer id) {
+        return toDto(jogoRepository.findById(id).get());
     }
 }

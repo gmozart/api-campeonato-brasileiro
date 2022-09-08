@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class ClassificacaoTimeDTO {
+public class ClassificacaoTimeDTO implements Comparable<ClassificacaoTimeDTO> {
 
     private String time;
     private Integer idTime;
@@ -18,5 +18,10 @@ public class ClassificacaoTimeDTO {
     private Integer derrotas;
     private Integer golsMarcados;
     private Integer golsSofridos;
+
+    @Override
+    public  int compareTo(ClassificacaoTimeDTO o){
+        return this.getPontos().compareTo(o.getPontos());
+    }
 
 }
