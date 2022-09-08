@@ -44,8 +44,6 @@ public class JogoRestController {
 
    @GetMapping(value="/jogo/{id}")
     public ResponseEntity<JogoDTO> obterJogo(@PathVariable Integer id){
-
-        return ResponseEntity.ok().body(jogoService.obterJogos(id));
-        
+        return ResponseEntity.ok().body(jogoService.jogoId(id));
     }
 }

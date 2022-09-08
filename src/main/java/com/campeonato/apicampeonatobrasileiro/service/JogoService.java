@@ -199,7 +199,4 @@ public class JogoService {
         return  classificacaoDTO;
     }
 
-    public Object obterJogos(Integer id) {
-        return toDto(jogoRepository.findById(id).get());
-    }
 }
