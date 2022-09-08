@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -87,15 +84,19 @@ public class JogoService {
 
     private Jogo gerarJogos(LocalDateTime dataJogo, Integer rodada, Time time1, Time time2) {
         Jogo jogo = new Jogo();
+        Random random = new Random();// Quantidade de gols é baseada na maior goleada do mundo.
+        int gols1 = random.nextInt(7);
+        int gols2 = random.nextInt(7);
+        int publico = random.nextInt(35000)+5000;
 
         jogo.setTime1(time1);
         jogo.setTime2(time2);
         jogo.setRodada(rodada);
         jogo.setData(dataJogo);
         jogo.setEncerrado(false);
-        jogo.setGolsTime1(0);
-        jogo.setGolsTime2(0);
-        jogo.setPublicoPagante(0);
+        jogo.setGolsTime1(gols1);
+        jogo.setGolsTime2(gols2);
+        jogo.setPublicoPagante(publico);
         return jogo;
 
     }
