@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ApiCampeonatoBrasileiroApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(ApiCampeonatoBrasileiroApplication.class, args);
+
 	}
 
 }

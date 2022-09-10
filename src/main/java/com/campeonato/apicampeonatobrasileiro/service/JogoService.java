@@ -42,7 +42,7 @@ public class JogoService {
         List<Jogo> jogos = new ArrayList<>();
 
         int t = times.size();     // t recebe a quantidade máxima dos times
-        int m = times.size() / 2;  // m receve a quantidade máxima dos times e divide por 2
+        int m = times.size() / 2;  // m recebe a quantidade máxima dos times e divide por 2
         LocalDateTime dataJogo = primeiraRodada;
         Integer rodada = 0;
         for(int i = 0 ;i < t - 1; i++){ //Inicio da primeira rodada
@@ -84,7 +84,7 @@ public class JogoService {
 
     private Jogo gerarJogos(LocalDateTime dataJogo, Integer rodada, Time time1, Time time2) {
         Jogo jogo = new Jogo();
-        Random random = new Random();// Quantidade de gols é baseada na maior goleada do mundo.
+        Random random = new Random();
         int gols1 = random.nextInt(7);
         int gols2 = random.nextInt(7);
         int publico = random.nextInt(35000)+5000;
